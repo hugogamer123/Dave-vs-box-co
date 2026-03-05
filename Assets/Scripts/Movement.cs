@@ -15,17 +15,16 @@ public class Movement : MonoBehaviour
     [SerializeField] private float JumpForce;
     private Vector2 moveInput;
     //Below is for pumpkin destroying
-    private bool EPressed;
-    public float PumpkinsDestroyed = 0;
-    [SerializeField] private TextMeshProUGUI PumpkinText;
-    [SerializeField] private AudioSource Sfx;
-    [SerializeField] private AudioClip Ding;
     //For cutscenes
     public bool CanMove = true;
 
     //Below is for Player Animation
     Animator anim;
     private Vector2 lastMoveDirection;
+
+    private Vector3 lookdirection;
+    public LayerMask ropeLayerMask;
+    public float distance = 90.0f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,35 +60,16 @@ public class Movement : MonoBehaviour
     {
         rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+        public void MagnetMovement()
     {
-        if (EPressed)
-        {
-            if (collision.gameObject.CompareTag("Pumpkin"))
-            {
-                Destroy(collision.gameObject);
-                PumpkinsDestroyed++;
+        lookdirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
-                if (PumpkinsDestroyed == 6)
-                {
-                    //doorunlock.UnlockDoor();
-                    Sfx.PlayOneShot(Ding, 0.7f);
-                }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, lookdirection, distance, ropeLayerMask);
 
-            }
-        }
-    }
+        Vector2 MoveDir = hit.point;
 
-    public void Pickup()
-    {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            EPressed = true;
-        }
-        else
-        {
-            EPressed = false;
-        }
+        rb.MovePosition(MoveDir);
     }
 
     void ProcessInputs()
@@ -106,14 +86,5 @@ public class Movement : MonoBehaviour
         //Debug.Log($"MoveY is {moveY}");
         //Debug.Log($"LastMoveDir.x is {lastMoveDirection.x}");
         //Debug.Log($"LastMoveDir.y is {lastMoveDirection.y}");
-    }
-
-    void Animate()
-    {
-        anim.SetFloat("MoveX", moveInput.x);
-        anim.SetFloat("MoveY", moveInput.y);
-        anim.SetFloat("MoveMagnitude", moveInput.magnitude);
-        anim.SetFloat("LastMoveX", lastMoveDirection.x);
-        anim.SetFloat("LastMoveY", lastMoveDirection.y);
     }
 }
