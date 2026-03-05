@@ -544,6 +544,7 @@ MonoBehaviour:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!120 &633194358
 LineRenderer:
   serializedVersion: 2
@@ -692,6 +693,9 @@ GameObject:
 =======
 --- !u!61 &633194358
 >>>>>>> Stashed changes
+=======
+--- !u!61 &633194358
+>>>>>>> Stashed changes
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -699,7 +703,11 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 661952899}
+=======
+  m_GameObject: {fileID: 633194352}
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 633194352}
 >>>>>>> Stashed changes
@@ -742,6 +750,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!212 &661952901
 SpriteRenderer:
@@ -1018,6 +1027,8 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
