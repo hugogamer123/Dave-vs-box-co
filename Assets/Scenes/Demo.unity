@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 569459579}
   - component: {fileID: 569459578}
   - component: {fileID: 569459577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PullObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,6 +559,8 @@ MonoBehaviour:
   distance: 90
   magnet: {fileID: 1719804812}
   MagnetDuration: 0.1
+  pushPoint: {fileID: 1868797597}
+  pushduration: 0.1
   dashforce: 25
   dashcounter: 0
   dashtime: 0.2
@@ -650,6 +652,7 @@ Transform:
   m_Children:
   - {fileID: 1862001986}
   - {fileID: 1719804814}
+  - {fileID: 1868797596}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &633194357
@@ -785,6 +788,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f8940e30-62ca-46a2-b7fb-a14a2c66d74e
     m_ActionName: 'Player/Pull Object[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 633194353}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: Push
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 632b55e4-7bbe-47de-8408-0c64d08da35f
+    m_ActionName: 'Player/Push Away[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -1044,7 +1063,7 @@ GameObject:
   - component: {fileID: 1190262823}
   - component: {fileID: 1190262822}
   - component: {fileID: 1190262821}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PullObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1489,7 +1508,7 @@ GameObject:
   - component: {fileID: 1634396180}
   - component: {fileID: 1634396179}
   - component: {fileID: 1634396178}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PullObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,7 +1768,7 @@ GameObject:
   - component: {fileID: 1840286828}
   - component: {fileID: 1840286827}
   - component: {fileID: 1840286826}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PullObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2000,6 +2019,95 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1868797595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1868797596}
+  - component: {fileID: 1868797598}
+  - component: {fileID: 1868797597}
+  m_Layer: 0
+  m_Name: PushCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1868797596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868797595}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 633194356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!250 &1868797597
+PointEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868797595}
+  m_Enabled: 0
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ForceMagnitude: 100
+  m_ForceVariation: 0
+  m_DistanceScale: 10
+  m_ForceSource: 0
+  m_ForceTarget: 0
+  m_ForceMode: 0
+  m_Drag: 0
+  m_AngularDrag: 0
+--- !u!58 &1868797598
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868797595}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 3
 --- !u!1 &2000458472
 GameObject:
   m_ObjectHideFlags: 0

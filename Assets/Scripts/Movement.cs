@@ -31,6 +31,9 @@ public class Movement : MonoBehaviour
 
     public float MagnetDuration;
 
+    public PointEffector2D pushPoint;
+    public float pushduration;
+
     [Header("Dash Stuff")]
     [SerializeField] private float dashforce = 25f;
     [SerializeField] private int dashcounter = 0;
@@ -81,6 +84,19 @@ public class Movement : MonoBehaviour
         magnet.isActive = false;
         Debug.Log("Stopped Pulling");
         StopCoroutine(PullTimer());
+    }
+
+    public void Push()
+    {
+        StartCoroutine(PushThing());
+    }
+
+    private IEnumerator PushThing()
+    {
+        pushPoint.enabled = true;
+        yield return new WaitForSeconds(pushduration);
+        pushPoint.enabled = false;
+        StopCoroutine(PushThing());
     }
 
     public void Jump(InputAction.CallbackContext context)
