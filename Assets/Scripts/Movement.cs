@@ -14,8 +14,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float JumpForce;
     private Vector2 moveInput;
-    //Below is for pumpkin destroying
-    //For cutscenes
+
     public bool CanMove = true;
 
     //Below is for Player Animation
@@ -30,10 +29,14 @@ public class Movement : MonoBehaviour
     public Magnet magnet;
 
     public float MagnetDuration;
+    public SpriteRenderer spriteRenderer;
 
     public PointEffector2D pushPoint;
     public float pushduration;
     public SwitchGravity switchGravity;
+    private bool m_FacingRight = true;
+
+    public GameObject player;
 
     [Header("Dash Stuff")]
     [SerializeField] private float dashforce = 25f;
@@ -50,6 +53,18 @@ public class Movement : MonoBehaviour
     {
         ProcessInputs();
         //Animate();
+
+        if (moveInput.x > 0 && !m_FacingRight)
+        {
+            // ... flip the player.
+            Flip();
+        }
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if (moveInput.x < 0 && m_FacingRight)
+        {
+            // ... flip the player.
+            Flip();
+        }
 
         //aPumpkinText.text = $"Pumpkins: {PumpkinsDestroyed}";
 
@@ -110,6 +125,16 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
+    }
+    private void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        m_FacingRight = !m_FacingRight;
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
     public void SwitchOrientation()
     {
