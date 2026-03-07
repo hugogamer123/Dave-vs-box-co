@@ -38,7 +38,8 @@ public class Movement : MonoBehaviour
 
     public GameObject player;
 
-    private bool isGrounded;
+    public bool isGrounded;
+    public LayerMask groundLayerMask;
     public float GroundRaycastNum;
 
     [Header("Dash Stuff")]
@@ -76,20 +77,6 @@ public class Movement : MonoBehaviour
         }
 
         //aPumpkinText.text = $"Pumpkins: {PumpkinsDestroyed}";
-
-
-        //GroundCheck
-        RaycastHit2D GroundCheck = Physics2D.Raycast(transform.position, Vector2.down, 1 << 8);
-        Debug.DrawRay(transform.position, Vector2.down, Color.red);
-
-        if (GroundCheck.collider != null)
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
     }
 
     private void FixedUpdate()
@@ -198,5 +185,15 @@ public class Movement : MonoBehaviour
         //Debug.Log($"MoveY is {moveY}");
         //Debug.Log($"LastMoveDir.x is {lastMoveDirection.x}");
         //Debug.Log($"LastMoveDir.y is {lastMoveDirection.y}");
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isGrounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+        {
+            isGrounded = false;
     }
 }
