@@ -38,6 +38,8 @@ public class Movement : MonoBehaviour
 
     public GameObject player;
 
+    public PlayerInput playerInput;
+
     public float PlayerVelX;
     public float PlayerVelY;
 
@@ -51,10 +53,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float dashtime = 0.2f;
 
     [Header("Wall Sliding")]
-    public bool wallSliding;
-    public Transform wallCheckPoint;
-    public bool wallCheck;
-    public LayerMask wallLayerMask;
+    [SerializeField] private bool CanHoldWall = false;
 
     private void Awake()
     {
@@ -82,33 +81,22 @@ public class Movement : MonoBehaviour
         PlayerVelX = rb.linearVelocity.x;
         PlayerVelY = rb.linearVelocity.y;
 
-        //Wall Sliding
-        if (!isGrounded)
-        {
-            wallCheck = Physics2D.OverlapCircle(wallCheckPoint.position, 0.1f, wallLayerMask);
 
-            if (moveInput.x > 0.1f || moveInput.x < 0.1f)
-            {
-                if(wallCheck)
-                {
-                    HandleWallSliding();
-                }
-            }
+        var WallHold = playerInput.actions["Hold On Wall"];
+        if (WallHold.IsPressed())
+        {
+            CanHoldWall = true;
+        }
+        else
+        {
+            CanHoldWall = false;
         }
 
-        if(wallCheck == false || isGrounded)
+
+        if (CanHoldWall)
         {
-            wallSliding = false;
+            rb.gravityScale = 0;
         }
-    }
-
-    private void HandleWallSliding()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -0.7f);
-
-        wallSliding = true;
-
-
     }
 
     private void FixedUpdate()
@@ -158,21 +146,8 @@ public class Movement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-       if(isGrounded && !wallSliding) {
-            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); 
-       }
 
-        if (wallSliding)
-        {
-            if (m_FacingRight)
-            {
-                rb.AddForce(new Vector2(-2, 5) * JumpForce, ForceMode2D.Impulse);
-            }
-            else
-            {
-                rb.AddForce(new Vector2(2, 5) * JumpForce, ForceMode2D.Impulse);
-            }
-        }
+        rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
     }
     private void Flip()
     {

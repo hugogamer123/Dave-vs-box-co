@@ -61,18 +61,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Flip Gravity",
+                    "name": "Hold On Wall",
                     "type": "Button",
-                    "id": "ed518a14-9ab6-4103-a83b-793fd1358aaf",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Gravity Gun",
-                    "type": "Button",
-                    "id": "fcab152c-c9de-4635-98db-b0a93e428d93",
+                    "id": "47b0508b-45a0-4661-ab08-776eac9b7731",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -302,23 +293,12 @@
                 },
                 {
                     "name": "",
-                    "id": "cf3891f5-068a-4240-b592-a51c82444e91",
-                    "path": "<Keyboard>/tab",
+                    "id": "453b5193-691f-4be9-86eb-dfa157e789aa",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Flip Gravity",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "638979c3-c3db-4321-a3c2-6c435adea887",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Joystick",
-                    "action": "Gravity Gun",
+                    "groups": "",
+                    "action": "Hold On Wall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

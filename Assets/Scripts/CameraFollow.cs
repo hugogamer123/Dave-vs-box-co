@@ -12,6 +12,9 @@ public class CameraFollow : MonoBehaviour
 
     private float lookOffset;
 
+    private bool isFalling;
+    public float maxVertOffset = 5f;    
+
     private void Start()
     {
         targetPoint = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
@@ -26,13 +29,32 @@ public class CameraFollow : MonoBehaviour
         {
             targetPoint.y = player.transform.position.y;
         }
-        
-        if(targetPoint.y < 0)
+
+        if(transform.position.y - player.transform.position.y > maxVertOffset)
+        {
+            isFalling = true;
+        }
+        else if(player.transform.position.y - transform.position.y > maxVertOffset)
+        {
+            isFalling = false;
+        }
+         
+        if(isFalling)
+        {
+            targetPoint.y = player.transform.position.y;
+
+            if(player.isGrounded)
+            {
+                isFalling = false;
+            }
+        }
+
+        if (targetPoint.y < 0)
         {
             targetPoint.y = 0;
         }
 
-        if(player.moveInput.x > 0f)
+        if (player.moveInput.x > 0f)
         {
             lookOffset = Mathf.Lerp(lookOffset, lookAheadDistance, lookAheadSpeed * Time.deltaTime);
         }

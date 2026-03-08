@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 1884305094}
     - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -518,6 +522,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 242822331}
   moveSpeed: 3
+  lookAheadDistance: 5
+  lookAheadSpeed: 3
+  maxVertOffset: 5
 --- !u!1001 &876348482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1055,6 +1062,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d322c11c89363e4d90ee9140632e804, type: 3}
+--- !u!114 &1884305094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+  m_PrefabInstance: {fileID: 285070481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1908889817
 PrefabInstance:
   m_ObjectHideFlags: 0
