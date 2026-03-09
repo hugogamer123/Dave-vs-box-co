@@ -10,9 +10,8 @@ Goals:
 - [x] Basic movement
 - [x] Magnet Pull
 - [x] Magnet Push
-- [ ] Wall Climbing
-- [ ] Half life 2 gravity gun
-- [ ] Create tutorial area
+- [x] Wall Climbing (kinda)
+- [ ] Create tutorial area (currently creating prototype area)
 - [ ] Make other areas
 - [ ] make the bosses 
 - [ ] make the cutscenes
