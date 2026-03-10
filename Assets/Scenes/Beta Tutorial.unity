@@ -208,38 +208,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
-      value: 47b0508b-45a0-4661-ab08-776eac9b7731
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
-      value: 'Player/Hold On Wall[/Keyboard/shift,/Keyboard/ctrl]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6110312253690498842, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.65
@@ -280,36 +248,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: JumpForce
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 1884305094}
-    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: WallJumpForce
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4846652540728496372, guid: d65b80f230a5eaa4ba1bb0b8ac97f4b1, type: 3}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4702474307750869917, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1001,17 +940,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5264057300679522658, guid: 5d322c11c89363e4d90ee9140632e804, type: 3}
   m_PrefabInstance: {fileID: 2019550015}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1884305094 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-  m_PrefabInstance: {fileID: 285070481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1908889817
 PrefabInstance:
   m_ObjectHideFlags: 0
