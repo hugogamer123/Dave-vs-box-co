@@ -14,3 +14,4 @@ If setup correctly the player should be able to grab onto walls and jump.
 
 ## Physics Objects
 To make a physics object be affected by the magnet, it's simple. Just mark it with the "push and pull" layer and give it a RigidBody2D.
+Then give it the "Pull Object" script/class, Make sure that the "rb" section has the physics object rigidbody and the "Magnet" section has the players magnet collider.
