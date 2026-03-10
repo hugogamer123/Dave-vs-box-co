@@ -208,66 +208,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: PullObj.m_Reference
-      value: 
-      objectReference: {fileID: -2754395904986247487, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: PushObj.m_Reference
-      value: 
-      objectReference: {fileID: 1173309309319787838, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: WallHold.m_Reference
-      value: 
-      objectReference: {fileID: -1309468519495745252, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: PullObj.m_UseReference
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: PushObj.m_UseReference
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: PullObj.m_Action.m_Name
-      value: Pull Obj
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: PushObj.m_Action.m_Name
-      value: Push Obj
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
-      value: 47b0508b-45a0-4661-ab08-776eac9b7731
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
-      value: 'Player/Hold On Wall[/Keyboard/shift,/Keyboard/ctrl]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371723340146548000, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6110312253690498842, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.65
@@ -308,36 +248,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: JumpForce
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: WallJumpForce
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4846652540728496372, guid: d65b80f230a5eaa4ba1bb0b8ac97f4b1, type: 3}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9109031693881962294, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4702474307750869917, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
