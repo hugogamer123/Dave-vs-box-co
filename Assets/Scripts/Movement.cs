@@ -23,8 +23,13 @@ public class Movement : MonoBehaviour
     public LayerMask groundLayerMask;
 
     // ── Magnet / Push ─────────────────────────────────────────────
-    public float magnetDuration;
-    public float pushDuration;
+    public float magnetDuration = 3f;   // how long pull stays active
+    public float pushDuration = 0.5f; // how long push stays active
+
+    private bool isPulling = false;
+    private bool isPushing = false;
+    private Coroutine pullRoutine;
+    private Coroutine pushRoutine;
 
     // ── Dash ──────────────────────────────────────────────────────
     [Header("Dash")]
@@ -55,13 +60,18 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        GetIputs();
+    }
+    private void GetIputs()
+    {
         Move();
         HandleFlip();
         Jump();
         HandleWallHold();
         HandleGravity();
+        Pull();
+        Push();
     }
-
     private void FixedUpdate()
     {
         if (!isOnWall)
@@ -164,21 +174,68 @@ public class Movement : MonoBehaviour
 
     // ── Magnet / Push ─────────────────────────────────────────────
 
-    public void Pull() => StartCoroutine(PullTimer());
+    public void Pull()
+    {
+        if (!inputHander.PullObjPressed()) return;
+
+        if (!isPulling)
+        {
+            // Activate
+            isPulling = true;
+            magnet.isActive = true;
+            pullRoutine = StartCoroutine(PullTimer());
+        }
+        else
+        {
+            // Cancel early (toggle off)
+            StopCoroutine(pullRoutine);
+            EndPull();
+        }
+    }
 
     private IEnumerator PullTimer()
     {
-        magnet.isActive = true;
         yield return new WaitForSeconds(magnetDuration);
+        EndPull();
+    }
+
+    private void EndPull()
+    {
+        isPulling = false;
         magnet.isActive = false;
     }
 
-    public void Push() => StartCoroutine(PushTimer());
+    // ── Push (toggle + auto-off timer) ───────────────────────────
+    //
+    //  Same pattern: first press activates for pushDuration,
+    //  second press cancels early.
+
+    public void Push()
+    {
+        if (!inputHander.PushObjPressed()) return;
+
+        if (!isPushing)
+        {
+            isPushing = true;
+            pushPoint.enabled = true;
+            pushRoutine = StartCoroutine(PushTimer());
+        }
+        else
+        {
+            StopCoroutine(pushRoutine);
+            EndPush();
+        }
+    }
 
     private IEnumerator PushTimer()
     {
-        pushPoint.enabled = true;
         yield return new WaitForSeconds(pushDuration);
+        EndPush();
+    }
+
+    private void EndPush()
+    {
+        isPushing = false;
         pushPoint.enabled = false;
     }
 

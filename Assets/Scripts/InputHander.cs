@@ -9,6 +9,8 @@ public class InputHander : MonoBehaviour
     public InputActionProperty Horizontal;
     public InputActionProperty Jump;
     public InputActionProperty WallHold;
+    public InputActionProperty PullObj;
+    public InputActionProperty PushObj;
 
     private void Awake()
     {
@@ -37,6 +39,8 @@ public class InputHander : MonoBehaviour
         Horizontal.action?.Enable();
         Jump.action?.Enable();
         WallHold.action?.Enable();
+        PullObj.action?.Enable();
+        PushObj.action?.Enable();
     }
 
     public void DisableInputs()
@@ -44,6 +48,8 @@ public class InputHander : MonoBehaviour
         Horizontal.action?.Disable();
         Jump.action?.Disable();
         WallHold.action?.Disable();
+        PullObj.action?.Disable();
+        PushObj.action?.Disable();
     }
 
     // ── Input Readers ─────────────────────────────────────────────
@@ -61,5 +67,14 @@ public class InputHander : MonoBehaviour
     public bool WallHoldPressed()
     {
         return WallHold.action?.IsPressed() ?? false;
+    }
+
+    public bool PullObjPressed()
+    {
+        return PullObj.action?.IsPressed() ?? false;
+    }
+    public bool PushObjPressed()
+    {
+        return PushObj.action?.IsPressed() ?? false;
     }
 }

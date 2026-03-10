@@ -208,6 +208,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: PullObj.m_Reference
+      value: 
+      objectReference: {fileID: -2754395904986247487, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: PushObj.m_Reference
+      value: 
+      objectReference: {fileID: 1173309309319787838, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: WallHold.m_Reference
+      value: 
+      objectReference: {fileID: -1309468519495745252, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: PullObj.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: PushObj.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: PullObj.m_Action.m_Name
+      value: Pull Obj
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101312267376005133, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: PushObj.m_Action.m_Name
+      value: Push Obj
+      objectReference: {fileID: 0}
     - target: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 17
@@ -287,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: playerInput
       value: 
-      objectReference: {fileID: 1884305094}
+      objectReference: {fileID: 0}
     - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: WallJumpForce
       value: 4
@@ -1001,17 +1029,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5264057300679522658, guid: 5d322c11c89363e4d90ee9140632e804, type: 3}
   m_PrefabInstance: {fileID: 2019550015}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1884305094 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5102263702478917054, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
-  m_PrefabInstance: {fileID: 285070481}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1908889817
 PrefabInstance:
   m_ObjectHideFlags: 0
