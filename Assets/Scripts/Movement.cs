@@ -1,57 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class Movement : MonoBehaviour
 {
-    //[SerializeField] private DoorUnlock doorunlock;
-    //Below is for movement
-    [SerializeField] private float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    [SerializeField] private float JumpForce;
-    private Vector2 moveInput;
-
-    public bool CanMove = true;
-
-    //Below is for Player Animation
-    Animator anim;
-    private Vector2 lastMoveDirection;
-
-    private Vector3 lookdirection;
-    public LayerMask ropeLayerMask;
-    public float distance = 90.0f;
-    float horizontalmove;
-
+    // ── References ──────────────────────────────────────────────
+    public InputHander inputHander;
     public Magnet magnet;
-
-    public float MagnetDuration;
     public SpriteRenderer spriteRenderer;
-
     public PointEffector2D pushPoint;
-    public float pushduration;
-    public SwitchGravity switchGravity;
-    private bool m_FacingRight = true;
-
     public GameObject player;
 
+    // ── Movement ─────────────────────────────────────────────────
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 10f;
+    public Rigidbody2D rb { get; private set; }
+    public Vector2 moveInput;
+    public bool CanMove = true;
+
+    // ── Ground Check ─────────────────────────────────────────────
     public bool isGrounded;
     public LayerMask groundLayerMask;
-    public float GroundRaycastNum;
 
-    [Header("Dash Stuff")]
-    [SerializeField] private float dashforce = 25f;
-    [SerializeField] private int dashcounter = 0;
-    [SerializeField] private float dashtime = 0.2f;
+    // ── Magnet / Push ─────────────────────────────────────────────
+    public float magnetDuration = 3f;   // how long pull stays active
+    public float pushDuration = 0.5f; // how long push stays active
 
+    private bool isPulling = false;
+    private bool isPushing = false;
+    private Coroutine pullRoutine;
+    private Coroutine pushRoutine;
+
+    // ── Dash ──────────────────────────────────────────────────────
+    [Header("Dash")]
+    [SerializeField] private float dashForce = 25f;
+    [SerializeField] private float dashTime = 0.2f;
+
+    // ── Wall Sliding ──────────────────────────────────────────────
     [Header("Wall Sliding")]
-    public bool wallSliding;
-    public Transform wallCheckPoint;
-    public bool wallCheck;
-    public LayerMask wallLayerMask;
+    [SerializeField] private float wallJumpForce = 8f;
+    [SerializeField] private bool isOnWall = false;
+    [SerializeField] private bool canHoldWall = false;
+    [SerializeField] private bool cancelWallHold = false;
+
+    private string whichWallWasTouched;
+    private bool canJumpOffWall;
+
+    // ── Animation / Facing ────────────────────────────────────────
+    private Animator anim;
+    private bool facingRight = true;
+
+    // ─────────────────────────────────────────────────────────────
 
     private void Awake()
     {
@@ -61,135 +60,110 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        ProcessInputs();
-        //Animate();
-
-        if (moveInput.x > 0 && !m_FacingRight)
-        {
-            // ... flip the player.
-            Flip();
-        }
-        // Otherwise if the input is moving the player left and the player is facing right...
-        else if (moveInput.x < 0 && m_FacingRight)
-        {
-            // ... flip the player.
-            Flip();
-        }
-
-        //Wall Sliding
-        if (!isGrounded)
-        {
-            wallCheck = Physics2D.OverlapCircle(wallCheckPoint.position, 0.1f, wallLayerMask);
-
-            if (moveInput.x > 0.1f || moveInput.x < 0.1f)
-            {
-                if(wallCheck)
-                {
-                    HandleWallSliding();
-                }
-            }
-        }
-
-        if(wallCheck == false || isGrounded)
-        {
-            wallSliding = false;
-        }
+        GetIputs();
     }
-
-    private void HandleWallSliding()
+    private void GetIputs()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -0.7f);
-
-        wallSliding = true;
-
-
+        Move();
+        HandleFlip();
+        Jump();
+        HandleWallHold();
+        HandleGravity();
+        Pull();
+        Push();
     }
-
     private void FixedUpdate()
     {
-        Vector2 velocity = rb.linearVelocity;
-        Vector2 movevelocity = new Vector2(moveInput.x * moveSpeed, velocity.y);
-        rb.linearVelocity = movevelocity;
-
-    }
-
-    public void Move(InputAction.CallbackContext context)
-    {
-        if (CanMove)
+        if (!isOnWall)
         {
-            moveInput = context.ReadValue<Vector2>();
+            rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
         }
-
-        horizontalmove = UnityEngine.Input.GetAxisRaw("Horizontal");
-    }
-
-    public void Pull()
-    {
-        StartCoroutine(PullTimer());
-    }
-
-    private IEnumerator PullTimer(){
-        magnet.isActive = true;
-        Debug.Log("Pulling");
-        yield return new WaitForSeconds(MagnetDuration);
-        magnet.isActive = false;
-        Debug.Log("Stopped Pulling");
-        StopCoroutine(PullTimer());
-    }
-
-    public void Push()
-    {
-        StartCoroutine(PushThing());
-    }
-
-    private IEnumerator PushThing()
-    {
-        pushPoint.enabled = true;
-        yield return new WaitForSeconds(pushduration);
-        pushPoint.enabled = false;
-        StopCoroutine(PushThing());
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-       if(isGrounded && !wallSliding) {
-            rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); 
-       }
-
-        if (wallSliding)
+        else
         {
-            if (m_FacingRight)
-            {
-                rb.AddForce(new Vector2(-2, 5) * JumpForce, ForceMode2D.Impulse);
-            }
-            else
-            {
-                rb.AddForce(new Vector2(2, 5) * JumpForce, ForceMode2D.Impulse);
-            }
+            rb.linearVelocity = Vector2.zero;
         }
     }
+
+    // ── Input Callbacks ──────────────────────────────────────────
+
+    public void Move()
+    {
+        if (CanMove && !isOnWall)
+            moveInput = inputHander.GetHorizontalInput();
+    }
+
+    public void Jump()
+    {
+        if (!inputHander.JumpPressed()) return;
+
+        if (isGrounded)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            return;
+        }
+
+        if (whichWallWasTouched == "L")
+            WallJump(Vector2.right);
+        else if (whichWallWasTouched == "R")
+            WallJump(Vector2.left);
+    }
+
+    // ── Wall Jump ─────────────────────────────────────────────────
+
+    private void WallJump(Vector2 horizontalDir)
+    {
+        canJumpOffWall = true;
+        canHoldWall = false;
+        isOnWall = false;
+        cancelWallHold = true;
+        rb.gravityScale = 1f;
+        rb.AddForce(horizontalDir * wallJumpForce, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * wallJumpForce, ForceMode2D.Impulse);
+        cancelWallHold = false;
+    }
+
+    // ── Wall Hold Helpers ─────────────────────────────────────────
+
+    private void HandleWallHold()
+    {
+        // InputHander drives the wall-hold button check
+        bool holdPressed = inputHander != null && inputHander.WallHoldPressed();
+
+        if (holdPressed && !cancelWallHold)
+            canHoldWall = true;
+        else
+            canHoldWall = false;
+    }
+
+    private void HandleGravity()
+    {
+        rb.gravityScale = (canHoldWall && isOnWall && !canJumpOffWall) ? 0f : 1f;
+    }
+
+    // ── Flip ──────────────────────────────────────────────────────
+
+    private void HandleFlip()
+    {
+        if (moveInput.x > 0 && !facingRight) Flip();
+        else if (moveInput.x < 0 && facingRight) Flip();
+    }
+
     private void Flip()
     {
-        // Switch the way the player is labelled as facing.
-        m_FacingRight = !m_FacingRight;
-
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
-    public void SwitchOrientation()
-    {
 
-    }
+    // ── Dash ──────────────────────────────────────────────────────
+
     public void Dash()
     {
-         dashcounter++;
-         CanMove = false;
-         rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
-         Vector2 dashDirection = new Vector2(moveInput.x * dashforce, 0);
-         rb.linearVelocity = dashDirection;
-         Invoke("EndDash",dashtime); 
+        CanMove = false;
+        rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+        rb.linearVelocity = new Vector2(moveInput.x * dashForce, 0f);
+        Invoke(nameof(EndDash), dashTime);
     }
 
     private void EndDash()
@@ -198,47 +172,107 @@ public class Movement : MonoBehaviour
         CanMove = true;
     }
 
-    public void MagnetMovement()
+    // ── Magnet / Push ─────────────────────────────────────────────
+
+    public void Pull()
     {
-        lookdirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if (!inputHander.PullObjPressed()) return;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, lookdirection, distance, ropeLayerMask);
-
-        Vector2 MoveDir = hit.point;
-
-        rb.MovePosition(MoveDir);
-    }
-
-    void ProcessInputs()
-    {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        if ((moveX == 0 && moveY == 0))
+        if (!isPulling)
         {
-            lastMoveDirection.x = moveInput.x;
-            lastMoveDirection.y = moveInput.y;
+            // Activate
+            isPulling = true;
+            magnet.isActive = true;
+            pullRoutine = StartCoroutine(PullTimer());
         }
-        //Debug.Log($"MoveX is {moveX}");
-        //Debug.Log($"MoveY is {moveY}");
-        //Debug.Log($"LastMoveDir.x is {lastMoveDirection.x}");
-        //Debug.Log($"LastMoveDir.y is {lastMoveDirection.y}");
+        else
+        {
+            // Cancel early (toggle off)
+            StopCoroutine(pullRoutine);
+            EndPull();
+        }
     }
+
+    private IEnumerator PullTimer()
+    {
+        yield return new WaitForSeconds(magnetDuration);
+        EndPull();
+    }
+
+    private void EndPull()
+    {
+        isPulling = false;
+        magnet.isActive = false;
+    }
+
+    // ── Push (toggle + auto-off timer) ───────────────────────────
+    //
+    //  Same pattern: first press activates for pushDuration,
+    //  second press cancels early.
+
+    public void Push()
+    {
+        if (!inputHander.PushObjPressed()) return;
+
+        if (!isPushing)
+        {
+            isPushing = true;
+            pushPoint.enabled = true;
+            pushRoutine = StartCoroutine(PushTimer());
+        }
+        else
+        {
+            StopCoroutine(pushRoutine);
+            EndPush();
+        }
+    }
+
+    private IEnumerator PushTimer()
+    {
+        yield return new WaitForSeconds(pushDuration);
+        EndPush();
+    }
+
+    private void EndPush()
+    {
+        isPushing = false;
+        pushPoint.enabled = false;
+    }
+
+    // ── Collision ─────────────────────────────────────────────────
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.layer != 8)
         {
             isGrounded = true;
+            cancelWallHold = false;
         }
         else
         {
-            isGrounded = false;
+            if (canHoldWall)
+            {
+                isOnWall = true;
+                isGrounded = false;
+
+                if (collision.gameObject.CompareTag("LWall"))
+                    whichWallWasTouched = "L";
+                else if (collision.gameObject.CompareTag("RWall"))
+                    whichWallWasTouched = "R";
+            }
+            else
+            {
+                isOnWall = false;
+                isGrounded = false;
+            }
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-      isGrounded = false;
+        isGrounded = false;
+        isOnWall = false;
+        whichWallWasTouched = null;
+        canJumpOffWall = false;
     }
 }

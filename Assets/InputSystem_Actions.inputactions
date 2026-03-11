@@ -61,9 +61,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Flip Gravity",
+                    "name": "Hold On Wall",
                     "type": "Button",
-                    "id": "ed518a14-9ab6-4103-a83b-793fd1358aaf",
+                    "id": "47b0508b-45a0-4661-ab08-776eac9b7731",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -238,6 +238,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e0db9475-54bb-45f1-be25-ccf0a79a9bdd",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1c04ea5f-b012-41d1-a6f7-02e963b52893",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -293,12 +304,23 @@
                 },
                 {
                     "name": "",
-                    "id": "cf3891f5-068a-4240-b592-a51c82444e91",
-                    "path": "<Keyboard>/tab",
+                    "id": "6e1488d4-bdb7-4faf-85bd-49a8acd4a6f1",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Flip Gravity",
+                    "action": "Hold On Wall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "453b5193-691f-4be9-86eb-dfa157e789aa",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold On Wall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

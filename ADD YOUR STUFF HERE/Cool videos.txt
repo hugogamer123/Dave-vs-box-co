@@ -1,0 +1,4 @@
+This is mainly for the developer to dump some youtube videos that are useful during my development
+
+https://www.youtube.com/watch?v=2VJfPOGTStU  Cam movement
+https://www.youtube.com/watch?v=CE9VOZivb3I Scene transitions

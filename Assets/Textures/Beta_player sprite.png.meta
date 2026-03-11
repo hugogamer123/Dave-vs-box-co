@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1c3d4dc6552987247bafa307cb20aae3
+guid: d65b80f230a5eaa4ba1bb0b8ac97f4b1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3791619701116685714
-    second: Beta Player sheet_0
+      213: -4846652540728496372
+    second: Beta_player sprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beta Player sheet_0
+      name: Beta_player sprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 24
-        height: 38
+        x: 49
+        y: 57
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29dce60870a8e9430800000000000000
-      internalID: 3791619701116685714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beta Player sheet_1
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 8
-        width: 24
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e70978e9e9b32a744adff031c00e6c58
-      internalID: 1250045440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beta Player sheet_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 8
-        width: 28
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27fae8d17d1d6b54bb5016c803f467b1
-      internalID: -1503182230
+      spriteID: c0f2220613b3dbcb0800000000000000
+      internalID: -4846652540728496372
       vertices: []
       indices: 
       edges: []
@@ -169,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 82e23826b299cd04c850f616c93e6d0b
+    spriteID: 1fd72b846cb4c4942bd1011e60814e19
     internalID: 0
     vertices: []
     indices: 
@@ -179,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Beta Player sheet_0: 3791619701116685714
-      Beta Player sheet_1: 1250045440
-      Beta Player sheet_2: -1503182230
+      Beta_player sprite_0: -4846652540728496372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
