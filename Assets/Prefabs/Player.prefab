@@ -418,6 +418,8 @@ MonoBehaviour:
   isOnWall: 0
   canHoldWall: 0
   cancelWallHold: 0
+  quickDashForce: 17
+  quickDashDuration: 0.12
 --- !u!114 &4101312267376005133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +468,42 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -1309468519495745252, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  PullObj:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Pull Obj
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 56ba1696-53e2-4874-b208-636d075c5063
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2754395904986247487, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  PushObj:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Push Obj
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 62690dbb-b158-4ab0-9d0e-8dbba5a2a447
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1173309309319787838, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  QuickDash:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Quick Dash
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 267ba06c-be28-4ba5-8a63-b7e783bf061d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 2989600345786705403, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!50 &2268354899508711755
 Rigidbody2D:
   serializedVersion: 5

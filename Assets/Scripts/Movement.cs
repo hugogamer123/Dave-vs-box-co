@@ -50,6 +50,12 @@ public class Movement : MonoBehaviour
     private Animator anim;
     private bool facingRight = true;
 
+    // ── Quick Dash ──────────────────────────────────────────────────────
+    [Header("Quick Dash")]
+    [SerializeField] private float quickDashForce = 15f;
+    [SerializeField] private float quickDashDuration = 0.12f;
+    private bool isQuickDashing = false;
+
     // ─────────────────────────────────────────────────────────────
 
     private void Awake()
@@ -60,9 +66,10 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        GetIputs();
+        GetInputs();
+        Debug.Log($"Quick Dash pressed: {inputHander.QuickDashPressed()}");
     }
-    private void GetIputs()
+    private void GetInputs()
     {
         Move();
         HandleFlip();
@@ -71,9 +78,18 @@ public class Movement : MonoBehaviour
         HandleGravity();
         Pull();
         Push();
+        QuickDash();
     }
     private void FixedUpdate()
     {
+        if (isQuickDashing)
+        {
+            // Maintain dash velocity during quick dash so FixedUpdate doesn't override it.
+            float dir = facingRight ? 1f : -1f;
+            rb.linearVelocity = new Vector2(dir * quickDashForce, 0f);
+            return;
+        }
+
         if (!isOnWall)
         {
             rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
@@ -85,6 +101,30 @@ public class Movement : MonoBehaviour
     }
 
     // ── Input Callbacks ──────────────────────────────────────────
+
+    public void QuickDash()
+    {
+        if (!inputHander.QuickDashPressed()) return;
+        if (isQuickDashing) return;
+
+        StartCoroutine(QuickDashRoutine());
+    }
+
+    private IEnumerator QuickDashRoutine()
+    {
+        isQuickDashing = true;
+        CanMove = false;
+        rb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+
+        float dir = facingRight ? 1f : -1f;
+        rb.linearVelocity = new Vector2(dir * quickDashForce, 0f);
+
+        yield return new WaitForSeconds(quickDashDuration);
+
+        rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        CanMove = true;
+        isQuickDashing = false;
+    }
 
     public void Move()
     {

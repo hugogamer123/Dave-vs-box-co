@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputHander : MonoBehaviour
@@ -11,6 +11,7 @@ public class InputHander : MonoBehaviour
     public InputActionProperty WallHold;
     public InputActionProperty PullObj;
     public InputActionProperty PushObj;
+    public InputActionProperty QuickDash;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class InputHander : MonoBehaviour
         WallHold.action?.Enable();
         PullObj.action?.Enable();
         PushObj.action?.Enable();
+        QuickDash.action?.Enable();
     }
 
     public void DisableInputs()
@@ -50,6 +52,7 @@ public class InputHander : MonoBehaviour
         WallHold.action?.Disable();
         PullObj.action?.Disable();
         PushObj.action?.Disable();
+        QuickDash.action?.Disable();
     }
 
     // ── Input Readers ─────────────────────────────────────────────
@@ -76,5 +79,10 @@ public class InputHander : MonoBehaviour
     public bool PushObjPressed()
     {
         return PushObj.action?.IsPressed() ?? false;
+    }
+
+    public bool QuickDashPressed()
+    {
+        return QuickDash.action?.WasPressedThisFrame() ?? false;
     }
 }

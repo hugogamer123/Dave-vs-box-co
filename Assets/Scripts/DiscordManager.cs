@@ -43,7 +43,7 @@ public class DiscordManager : MonoBehaviour
             {
                 if (result == Discord.Result.Ok)
                 {
-                    Debug.Log("Discord status updated successfully.");
+                    //Debug.Log("Discord status updated successfully.");
                 }
                 else
                 {
