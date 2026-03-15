@@ -21,9 +21,18 @@ public class Hand : MonoBehaviour
     [SerializeField] float Duration2;
     [SerializeField] float Duration3;
     [SerializeField] float HandUpDuration;
+
+    Vector3 initialPosition;
+
+    public BossGeneral bossGeneral;
     public void Attack()
     {
         StartCoroutine(HandAttack(Duration1, Duration2, Duration3, HandUpDuration));
+    }
+
+    private void Start()
+    {
+        initialPosition = transform.position;
     }
 
     private void Update()
@@ -35,8 +44,6 @@ public class Hand : MonoBehaviour
     IEnumerator HandAttack(float duration1, float duration2, float duration3, float handupduration)
     {
         float elapsed1 = 0f;
-
-        Vector3 initialPosition = transform.position;
 
         while (elapsed1 < duration1)
         {
@@ -88,5 +95,7 @@ public class Hand : MonoBehaviour
         }
 
         Debug.Log("Hand Attack Finished");
+
+        bossGeneral.Phase1Attacking = false;
     }
 }

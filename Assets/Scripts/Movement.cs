@@ -58,6 +58,13 @@ public class Movement : MonoBehaviour
 
     // ─────────────────────────────────────────────────────────────
 
+    // ── Die Code ─────────────────────────────────────────────────
+
+    public void Die()
+    {
+
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,7 +74,6 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         GetInputs();
-        Debug.Log($"Quick Dash pressed: {inputHander.QuickDashPressed()}");
     }
     private void GetInputs()
     {
