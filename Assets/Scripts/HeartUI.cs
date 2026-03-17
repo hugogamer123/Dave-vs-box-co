@@ -8,7 +8,7 @@ public class HeartUI : MonoBehaviour
 
     public Movement movement;
 
-    int HealthIndex = 3;
+    int HealthIndex = 4;
 
     public void RemoveHeart()
     {
@@ -24,7 +24,7 @@ public class HeartUI : MonoBehaviour
 
     private void Update()
     {
-        if (HealthIndex < 0)
+        if (HealthIndex <= 0)
         {
             movement.Die();
         }

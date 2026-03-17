@@ -405,7 +405,7 @@ MonoBehaviour:
   heartUI: {fileID: 0}
   DamageLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 0
   moveSpeed: 5
   jumpForce: 5
   moveInput: {x: 0, y: 0}
@@ -414,17 +414,21 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  magnetDuration: 0
-  pushDuration: 0
+  magnetDuration: 0.1
+  pushDuration: 0.1
   dashForce: 25
   dashTime: 0.2
   wallJumpForce: 8
   isOnWall: 0
-  canHoldWall: 0
+  canHoldWall: 1
   cancelWallHold: 0
   quickDashForce: 23
   quickDashDuration: 0.12
   DashCooldownNum: 0.5
+  handLCollider: {fileID: 0}
+  handRCollider: {fileID: 0}
+  PlayerCollider: {fileID: 5486387892403866774}
+  damageCooldown: 3
 --- !u!114 &4101312267376005133
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
     bool isTriggered;
     public void Die()
     {
-
+        
     }
 
     IEnumerator DamageCooldown()
@@ -99,27 +99,14 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         PlayerCollider = GetComponent<Collider2D>();
-        handLCollider = GameObject.FindGameObjectWithTag("LHand").GetComponent<Collider2D>();
-        handRCollider = GameObject.FindGameObjectWithTag("RHand").GetComponent<Collider2D>();
+
+        Physics2D.IgnoreCollision(PlayerCollider, handLCollider, true);
+        Physics2D.IgnoreCollision(PlayerCollider, handRCollider, true);
     }
 
     private void Update()
     {
         GetInputs();
-        /* So theres a bug where players dont get damaged
-         * and this is the easiest solution
-         * AKA: fucking up the variable names to not make sense
-         * sorry...*/
-        if (!gotDamaged)
-        {
-            Physics2D.IgnoreCollision(handLCollider, PlayerCollider, true);
-            Physics2D.IgnoreCollision(handRCollider, PlayerCollider, true);
-        }
-        else
-        {
-            Physics2D.IgnoreCollision(handLCollider, PlayerCollider, false);
-            Physics2D.IgnoreCollision(handRCollider, PlayerCollider, false);
-        }
     }
     private void GetInputs()
     {
@@ -384,9 +371,10 @@ public class Movement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isTriggered = false;
+        Debug.LogError($"isTriggered = {isTriggered}");
         if (!isTriggered)
         {
-            if(collision.gameObject.layer == 10)
+            if(collision.CompareTag("LHand") || collision.CompareTag("RHand"))
             {
             Debug.LogError("Player Damaged");
             Debug.LogError($"Dont repeat damage {dontRepeatDamage} ");

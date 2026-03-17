@@ -19,6 +19,11 @@ public class Hand : MonoBehaviour
     [SerializeField] float Duration3;
     [SerializeField] float HandUpDuration;
 
+    //Make sures both hands are dead
+    [Header("Hand Death")]
+    public float HandHealth;
+    [SerializeField] bool HandIsDead;
+
     Vector3 initialPosition;
 
     public BossGeneral bossGeneral;
@@ -35,6 +40,8 @@ public class Hand : MonoBehaviour
     private void Update()
     {
         HandMoveTo = new Vector3(PlayerTransform.position.x, -1f, 0);
+
+        if(HandHealth == 0){HandIsDead = true;}
     }
 
     IEnumerator HandAttack(float duration1, float duration2, float duration3, float handupduration)
@@ -66,7 +73,7 @@ public class Hand : MonoBehaviour
         float GroundDistance = hit.distance;
         Debug.Log("Ground Distance: " + GroundDistance);
 
-        Vector3 FloorHit = new Vector3(transform.position.x, -GroundDistance, 0);
+        Vector3 FloorHit = new Vector3(transform.position.x, -GroundDistance + transform.position.y + 1f, 0);
         Debug.Log($"FloorHit Vector: {FloorHit}");
 
 

@@ -11,6 +11,7 @@ TagManager:
   - Boundry
   - LHand
   - RHand
+  - HandSwitch
   layers:
   - Default
   - TransparentFX
