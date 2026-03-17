@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -24,6 +25,13 @@ public class Hand : MonoBehaviour
     public float HandHealth;
     [SerializeField] bool HandIsDead;
 
+    //List Of all Hand Colliders
+    //MAKE SURE THIS ONLY CONTAINS DAMAGING COLLIDERS!! NOT THE MAIN COLLIDER OR ELSE HAND WILL FALL THROUGH FLOOR
+    public List<Collider2D> Colliders;
+
+    public bool IsHandLDead;
+    public bool IsHandRDead;
+
     Vector3 initialPosition;
 
     public BossGeneral bossGeneral;
@@ -42,15 +50,21 @@ public class Hand : MonoBehaviour
         HandMoveTo = new Vector3(PlayerTransform.position.x, -1f, 0);
 
         if(HandHealth == 0){HandIsDead = true;}
+
+        if (HandIsDead)
+        {
+            StartHandDeath();
+        }
     }
 
     IEnumerator HandAttack(float duration1, float duration2, float duration3, float handupduration)
     {
         float elapsed1 = 0f;
 
+        //Follows Player
         while (elapsed1 < duration1)
         {
-            
+
             rb.MovePosition(HandMoveTo);
 
             elapsed1 += Time.fixedDeltaTime;
@@ -76,7 +90,7 @@ public class Hand : MonoBehaviour
         Vector3 FloorHit = new Vector3(transform.position.x, -GroundDistance + transform.position.y + 1f, 0);
         Debug.Log($"FloorHit Vector: {FloorHit}");
 
-
+        //Strikes down
         while (elapsed2 < duration2)
         {
             Vector3 targetPosition = Vector3.MoveTowards(transform.position, FloorHit, HandDownForce * Time.fixedDeltaTime);
@@ -88,6 +102,7 @@ public class Hand : MonoBehaviour
         }
 
         float elapsed3 = 0f;
+        //Goes back to OG position
         while (elapsed3 < duration3)
         {
             Vector3 targetPosition = Vector3.MoveTowards(transform.position, initialPosition, GoBackForce * Time.fixedDeltaTime);
@@ -100,5 +115,17 @@ public class Hand : MonoBehaviour
         Debug.Log("Hand Attack Finished");
 
         bossGeneral.Phase1Attacking = false;
+    }
+
+    void StartHandDeath()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 1f;
+
+        foreach (var collision in Colliders)
+        {
+            collision.enabled = false;
+        }
     }
 }

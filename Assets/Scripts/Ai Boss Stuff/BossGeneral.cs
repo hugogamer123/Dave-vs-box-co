@@ -36,7 +36,7 @@ public class BossGeneral : MonoBehaviour
             Debug.Log("Coroutine has started");
             //Returns if attack chance is false
             int AttackChance = Random.Range(-1, 2);
-            if (AttackChance == 0)
+            if (AttackChance == 0 && hand.IsHandLDead == false && hand.IsHandRDead == false)
             {
                 Debug.Log("Attack chance failed.. Restarting Coroutine");
                 yield return new WaitForSeconds(1f);

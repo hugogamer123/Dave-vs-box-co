@@ -1677,8 +1677,11 @@ MonoBehaviour:
   Duration2: 3
   Duration3: 3
   HandUpDuration: 0.15
-  HandHealth: 5
+  HandHealth: 3
   HandIsDead: 0
+  Colliders:
+  - {fileID: 1169466861}
+  - {fileID: 850038324}
   bossGeneral: {fileID: 1307614975}
 --- !u!212 &1169466858
 SpriteRenderer:
@@ -2054,7 +2057,7 @@ Transform:
   m_GameObject: {fileID: 1437358077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.114285, y: -0.3142861, z: 0}
+  m_LocalPosition: {x: -0.2, y: -0.3142861, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2434,6 +2437,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 854281966}
     - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: jumpForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
       propertyPath: handLCollider
       value: 
       objectReference: {fileID: 546140721}
@@ -2441,6 +2448,10 @@ PrefabInstance:
       propertyPath: handRCollider
       value: 
       objectReference: {fileID: 1915330076}
+    - target: {fileID: 7440244137984001522, guid: 4f4fed935d8adc749a2d500d35fa8bb3, type: 3}
+      propertyPath: damageCooldown
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3233,7 +3244,7 @@ Transform:
   m_GameObject: {fileID: 2079920282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.16, y: 4.57, z: 0}
+  m_LocalPosition: {x: 4.23, y: 4.52, z: 0}
   m_LocalScale: {x: -0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3338,8 +3349,11 @@ MonoBehaviour:
   Duration2: 3
   Duration3: 3
   HandUpDuration: 0.15
-  HandHealth: 5
+  HandHealth: 3
   HandIsDead: 0
+  Colliders:
+  - {fileID: 2079920285}
+  - {fileID: 1437358080}
   bossGeneral: {fileID: 1307614975}
 --- !u!1 &2108789519
 GameObject:
