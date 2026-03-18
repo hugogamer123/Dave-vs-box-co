@@ -9,7 +9,7 @@ public class HandSwitch : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             hand.HandHealth--;
-            Debug.LogWarning($"Remaining Health On Hand:¨{hand.HandHealth}");
+            Debug.LogWarning($"Remaining Health On Hand:{hand.HandHealth}");
         }
     }
 }
