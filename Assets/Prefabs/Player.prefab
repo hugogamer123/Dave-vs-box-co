@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 8794319685227812389}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,7 +407,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   moveSpeed: 5
-  jumpForce: 5
+  jumpForce: 6
   moveInput: {x: 0, y: 0}
   CanMove: 1
   isGrounded: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   handLCollider: {fileID: 0}
   handRCollider: {fileID: 0}
   PlayerCollider: {fileID: 5486387892403866774}
-  damageCooldown: 3
+  damageCooldown: 4
 --- !u!114 &4101312267376005133
 MonoBehaviour:
   m_ObjectHideFlags: 0
