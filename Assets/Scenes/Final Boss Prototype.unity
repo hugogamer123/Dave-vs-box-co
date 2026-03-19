@@ -1060,7 +1060,7 @@ Transform:
   m_GameObject: {fileID: 1138626360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 16.88, y: -7.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1110,13 +1110,13 @@ MonoBehaviour:
   Duration2: 3
   Duration3: 3
   HandUpDuration: 0.15
-  SlideDur1: 0
-  SlideDur2: 0
-  SlideDur3: 0
-  StartHandLGo: {fileID: 0}
-  StartHandRGo: {fileID: 0}
-  HandLGoTo: {fileID: 0}
-  HandRGoTo: {fileID: 0}
+  SlideDur1: 3
+  SlideDur2: 3
+  SlideDur3: 3
+  StartHandLGo: {fileID: 1525552828}
+  StartHandRGo: {fileID: 1138626361}
+  HandLGoTo: {fileID: 2080400692}
+  HandRGoTo: {fileID: 1196702671}
   HandHealth: 1
   HandIsDead: 0
   Colliders:
@@ -1268,6 +1268,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.3464923, y: 1.1271713}
   m_EdgeRadius: 0
+--- !u!1 &1196702670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1196702671}
+  m_Layer: 0
+  m_Name: HandRAttackGoTo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1196702671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196702670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.29, y: -9.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1622506061}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1307614974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,7 +1549,7 @@ Transform:
   m_GameObject: {fileID: 1525552827}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -22.29, y: -9.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1555,6 +1586,8 @@ Transform:
   m_Children:
   - {fileID: 1525552828}
   - {fileID: 1138626361}
+  - {fileID: 2080400692}
+  - {fileID: 1196702671}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624359291
@@ -2737,19 +2770,50 @@ MonoBehaviour:
   Duration2: 3
   Duration3: 3
   HandUpDuration: 0.15
-  SlideDur1: 0
-  SlideDur2: 0
-  SlideDur3: 0
-  StartHandLGo: {fileID: 0}
-  StartHandRGo: {fileID: 0}
-  HandLGoTo: {fileID: 0}
-  HandRGoTo: {fileID: 0}
+  SlideDur1: 3
+  SlideDur2: 3
+  SlideDur3: 3
+  StartHandLGo: {fileID: 1525552828}
+  StartHandRGo: {fileID: 1138626361}
+  HandLGoTo: {fileID: 2080400692}
+  HandRGoTo: {fileID: 1196702671}
   HandHealth: 1
   HandIsDead: 0
   Colliders:
   - {fileID: 2079920285}
   - {fileID: 1437358080}
   bossGeneral: {fileID: 1307614975}
+--- !u!1 &2080400691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080400692}
+  m_Layer: 0
+  m_Name: HandLAttackGoTo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2080400692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080400691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.88, y: -10.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1622506061}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2108789519
 GameObject:
   m_ObjectHideFlags: 0

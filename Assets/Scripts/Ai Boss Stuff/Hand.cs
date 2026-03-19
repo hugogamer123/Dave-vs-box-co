@@ -53,7 +53,8 @@ public class Hand : MonoBehaviour
     public void AttackPhase1()
     {
         if (HandIsDead || bossGeneral == null || bossGeneral.Phase1Finished) return;
-        StartCoroutine(HandAttack(Duration1, Duration2, Duration3, HandUpDuration));
+        //StartCoroutine(HandAttack(Duration1, Duration2, Duration3, HandUpDuration));
+        StartCoroutine(SlideAttack(SlideDur1, SlideDur2, SlideDur3));
     }
 
     private void Start()
@@ -144,6 +145,7 @@ public class Hand : MonoBehaviour
 
         }
         bossGeneral.Phase1Attacking = false;
+        yield break;
     }
     IEnumerator SlideAttack(float dur1, float dur2, float dur3)
     {
