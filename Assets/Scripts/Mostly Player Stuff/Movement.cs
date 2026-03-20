@@ -22,6 +22,11 @@ public class Movement : MonoBehaviour
     public Vector2 moveInput;
     public bool CanMove = true;
 
+    // ── Jump stuff ───────────────────────────────────────────────
+    [Header("Jump Stuff")]
+    [SerializeField] float jumpduration;
+    [SerializeField] float maxjumpduration;
+
     // ── Ground Check ─────────────────────────────────────────────
     public bool isGrounded;
     public LayerMask groundLayerMask;

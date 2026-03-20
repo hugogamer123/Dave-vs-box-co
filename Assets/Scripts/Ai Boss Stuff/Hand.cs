@@ -55,7 +55,11 @@ public class Hand : MonoBehaviour
     public void AttackPhase1()
     {
         if (HandIsDead || bossGeneral == null || bossGeneral.Phase1Finished) return;
-        //StartCoroutine(HandAttack(Duration1, Duration2, Duration3, HandUpDuration));
+        StartCoroutine(HandAttack(Duration1, Duration2, Duration3, HandUpDuration));
+        //StartCoroutine(SlideAttack(SlideDur1, SlideDur2, SlideDur3));
+    }
+    public void SlideAttack()
+    {
         StartCoroutine(SlideAttack(SlideDur1, SlideDur2, SlideDur3));
     }
 
@@ -215,6 +219,8 @@ public class Hand : MonoBehaviour
             transform.position = Vector2.Lerp(startPos3, OgPos, elapsed3 / dur3);
             yield return new WaitForFixedUpdate();
         }
+        bossGeneral.Phase1Attacking = false;
+        yield break;
     }
     void StartHandDeath()
     {

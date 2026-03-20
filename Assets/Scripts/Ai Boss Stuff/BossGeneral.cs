@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class BossGeneral : MonoBehaviour
@@ -19,6 +20,9 @@ public class BossGeneral : MonoBehaviour
 
     public bool P1CouStoped = false;
     bool phase1CoroutineRunning = false;
+
+
+    public string whatAttackuse;
 
     void Update()
     {
@@ -70,35 +74,91 @@ public class BossGeneral : MonoBehaviour
             bool rightDead = rightHand.IsDead;
             int HandUsed = -1;
 
-            if (!leftDead && !rightDead)
-            {
-                HandUsed = Random.Range(0, 2);
-            }
-            else if (leftDead && !rightDead)
-            {
-                HandUsed = 1;
-            }
-            else if (!leftDead && rightDead)
-            {
-                HandUsed = 0;
-            }
-            else
-            {
-                Phase1Finished = true;
-                break;
-            }
+            //Attempting to randomly generate a phase to use
+            int WhatAttackUseInt = Random.Range(0, 5);
+            Debug.Log($"Attack Int: {WhatAttackUseInt}");
 
-            Hand selectedHand = (HandUsed == 0) ? leftHand : rightHand;
+            if(WhatAttackUseInt == 0 || WhatAttackUseInt == 1)
+            {
+                if (!leftDead && !rightDead)
+                {
+                    HandUsed = Random.Range(0, 2);
+                    whatAttackuse = "slam";
+                }
+                else if (leftDead && !rightDead)
+                {
+                    HandUsed = 1;
+                    whatAttackuse = "slam";
+                }
+                else if (!leftDead && rightDead)
+                {
+                    HandUsed = 0;
+                    whatAttackuse = "slam";
+                }
+                else
+                {
+                    Phase1Finished = true;
+                    break;
+                }
+            }
+            else if(WhatAttackUseInt == 2 || WhatAttackUseInt == 3 || WhatAttackUseInt == 4)
+            {
+                if (!leftDead && !rightDead)
+                {
+                    HandUsed = 3;
+                    whatAttackuse = "slide";
+                }
+                else if (leftDead && !rightDead)
+                {
+                    HandUsed = 1;
+                    whatAttackuse = "slide";
+                }
+                else if (!leftDead && rightDead)
+                {
+                    HandUsed = 0;
+                    whatAttackuse = "slide";
+                }
+                else
+                {
+                    Phase1Finished = true;
+                    break;
+                }
+            }
+            
+            Hand selectedHand = null;
+            Hand additionalHand = null;
+            if(HandUsed == 0) {selectedHand = leftHand;}
+            else if(HandUsed == 1) {selectedHand = rightHand;}
+            else if (HandUsed == 3) {selectedHand = leftHand; additionalHand = rightHand;}
             if (selectedHand != null && !selectedHand.IsDead)
             {
                 Debug.Log(HandUsed);
-                selectedHand.AttackPhase1();
+                if(whatAttackuse == "slam")
+                {
+                    selectedHand.AttackPhase1();
+                    if(additionalHand != null) {additionalHand.AttackPhase1();}
+                }
+                else if (whatAttackuse == "slide")
+                {
+                    selectedHand.SlideAttack();
+                    if(additionalHand != null) {additionalHand.SlideAttack();}
+                }
                 Phase1Attacking = true;
             }
+
+
 
             break;
         }
 
         phase1CoroutineRunning = false;
     }
+
+
+    IEnumerator Phase2()
+    {
+        yield return null;
+    }
 }
+
+
