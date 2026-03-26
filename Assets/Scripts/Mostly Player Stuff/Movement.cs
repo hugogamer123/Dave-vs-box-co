@@ -77,14 +77,112 @@ public class Movement : MonoBehaviour
     [SerializeField] Collider2D PlayerCollider;
     [SerializeField] float damageCooldown = .25f;
 
+    // ── 3 in 1 magnet stuff
+    [Header("3 In 1 Magnet")]
+    public string WhatMagnetToUse;
+    [Space]
+    [SerializeField] float PlayerLazerWidth;
+    [SerializeField] LineRenderer LazerPointiere;
+    Vector3 PlayerPos;
+    [SerializeField] CannonShoot cannonShoot;
+    [SerializeField] GameObject BossAI;
+    [SerializeField] float LaserMaxDist;
+    [SerializeField] LayerMask IgnorePlayerLayer;
+
     bool dontRepeatDamage = false;
     bool isTriggered;
     public void Die()
     {
         
     }
+    // This is the one function that houses all magnet abilities
+    public void Magnet()
+    {
+        if(inputHander.MagnetButPressed() == false) {return;}
 
-    IEnumerator DamageCooldown()
+        Debug.Log(WhatMagnetToUse);
+
+        if(WhatMagnetToUse == "pull")
+        {
+            if (!isPulling)
+            {
+                // Activate
+                isPulling = true;
+                magnet.isActive = true;
+                pullRoutine = StartCoroutine(PullTimer());
+            }
+            else
+            {
+                // Cancel early (toggle off)
+                StopCoroutine(pullRoutine);
+                EndPull();
+            }
+        }
+        else if (WhatMagnetToUse == "push")
+        {
+            if (!isPushing)
+            {
+                isPushing = true;
+                pushPoint.enabled = true;
+                pushRoutine = StartCoroutine(PushTimer());
+            }
+            else
+            {
+                StopCoroutine(pushRoutine);
+                EndPush();
+            }
+        }
+        else if (WhatMagnetToUse == "lazer")
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Vector2.zero, Vector2.zero);
+            Vector2 rayOrigin = Vector2.zero;
+
+            Debug.Log($"Is Facing right : {facingRight}");
+            if(!facingRight)
+            {
+                rayOrigin = (Vector2)transform.position + Vector2.left * 0.1f;
+                hit = Physics2D.Raycast(rayOrigin, Vector2.left, LaserMaxDist, ~IgnorePlayerLayer);
+
+                Vector3 rayEnd = hit.collider != null ? hit.point : rayOrigin + Vector2.left * LaserMaxDist;
+                Debug.DrawRay(rayOrigin, rayEnd - (Vector3)rayOrigin, Color.white);
+
+                // Log the actual end point of the ray
+                Vector2 endPoint = hit.collider != null ? hit.point : rayOrigin + Vector2.left * LaserMaxDist;
+                Debug.Log($"Ray End Point: {endPoint}");
+                Debug.Log($"Hit: {hit.collider}");
+            }
+            else if(facingRight)
+            {
+                rayOrigin = (Vector2)transform.position + Vector2.right * 0.1f;
+                hit = Physics2D.Raycast(rayOrigin, Vector2.right, LaserMaxDist, ~IgnorePlayerLayer);
+
+                Vector3 rayEnd = hit.collider != null ? hit.point : rayOrigin + Vector2.right * LaserMaxDist;
+                Debug.DrawRay(rayOrigin, rayEnd - (Vector3)rayOrigin, Color.white);
+
+                // Log the actual end point of the ray
+                Vector2 endPoint = hit.collider != null ? hit.point : rayOrigin + Vector2.right * LaserMaxDist;
+                Debug.Log($"Ray End Point: {endPoint}");
+                Debug.Log($"Hit: {hit.collider}");
+            }
+
+            if(hit.collider.CompareTag("cannon")){
+                hit.collider.TryGetComponent<CannonShoot>(out cannonShoot);
+                Debug.Log(cannonShoot);
+                Debug.Log($"Hit Cannon");
+
+            }
+        }
+    }
+
+    IEnumerator LazerPointer()
+    {
+        LazerPointiere.enabled = true;
+        yield return new WaitForSeconds(.2f);
+        LazerPointiere.enabled = false;
+        yield break;
+    }
+
+    public IEnumerator DamageCooldown()
     {
         if (!dontRepeatDamage)
         {
@@ -98,7 +196,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -112,11 +210,26 @@ public class Movement : MonoBehaviour
             Physics2D.IgnoreCollision(col, handLCollider, true);
             Physics2D.IgnoreCollision(col, handRCollider, true);
         }
+
+        WhatMagnetToUse = "pull";
+
+        if (LazerPointiere != null)
+        {
+            LazerPointiere.positionCount = 2;
+            LazerPointiere.useWorldSpace = true;
+            Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
+            LazerPointiere.SetPositions(initLaserPositions);
+            LazerPointiere.startWidth = PlayerLazerWidth;
+            LazerPointiere.endWidth = PlayerLazerWidth;
+            LazerPointiere.enabled = false;
+        }
     }
 
     private void Update()
     {
         GetInputs();
+
+     PlayerPos = transform.position;
     }
     private void GetInputs()
     {
@@ -128,6 +241,7 @@ public class Movement : MonoBehaviour
         Pull();
         Push();
         QuickDash();
+        Magnet();
     }
     private void FixedUpdate()
     {
