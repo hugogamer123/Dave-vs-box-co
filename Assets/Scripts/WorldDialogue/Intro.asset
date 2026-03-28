@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Intro
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: ???
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: ' That was a close call, little guy. Feeling alright?'
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: ' I think so... What the hell was that?!?! And where the hell am I? '
+    voice: {fileID: 0}
+  - speakerName: ???
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: "You are in the depths of Box & Co, and that was what this company does
+      to innocent, random people\u2014tried to steal your brain."
+    voice: {fileID: 0}
+  - speakerName: ???
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: Luckily I was here.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: HOW DO I GET OUT OF HERE?!?!
+    voice: {fileID: 0}
+  - speakerName: ???
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: Wait, big guy. I don't even know your name.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: Dave...
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: ' Hi Dave, I''m Johnny. And yes, I can take you out of this place.'
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: But you gotta listen to me.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: Just help me, please.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: There's just a problem.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: Of course.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: You gotta defeat the Boss of this company.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: ' Me?! I can''t even fight a kitten!
+
+'
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: You want me to fight a, probably, big business man?!?!
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: Nah, you'd win.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: The one that rules everything is an evil A.I.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: What?!
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: You are saying that the biggest company, the company that sells every type
+      of product and has control over half of the TV channels...
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: Is run by A.I.?
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: It actually doesn't sound that far off.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: 'Anyway...
+
+      
+
+'
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: If you wanna get outside Box & Co, you gotta defeat the A.I.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: But we'll help you.
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: What do you mean "we"?
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: We are a rebellion.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: 'Me and other people whose passions were destroyed by this monstrous A.I.
+      and want to put an end to it.
+
+      You in?'
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: Do I have any other option?
+    voice: {fileID: 0}
+  - speakerName: Dave
+    portrait: {fileID: 3832789701124330145, guid: a2c40042b41736640b3e252d8fa4079b, type: 3}
+    text: Nope.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: But before you go. Take these arms, they'll be your best weapons.
+    voice: {fileID: 0}
+  - speakerName: Johnny
+    portrait: {fileID: -5596429035447714211, guid: 3ebcb2e407bfaa9499c2052a34731171, type: 3}
+    text: Thanks, I guess. how many lines is this
+    voice: {fileID: 0}
