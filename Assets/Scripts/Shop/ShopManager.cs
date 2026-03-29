@@ -2,7 +2,7 @@ using UnityEngine;
 
 // ── Shop item data ────────────────────────────────────────────────
 
-public enum ShopItemType { DoubleJump, Dash, ExtraHeart, MoreStamina, BiggerRay }
+public enum ShopItemType { DoubleJump, Dash, ExtraHeart, MoreStamina, BiggerRay, BiggerMagnet }
 
 [System.Serializable]
 public class ShopItemData
@@ -47,11 +47,12 @@ public class ShopManager : MonoBehaviour
     {
         items = new ShopItemData[]
         {
-            new ShopItemData { itemName = "Double Jump",  description = "Jump a second time in mid-air!",        price = 200, type = ShopItemType.DoubleJump,  maxPurchases = 1  },
-            new ShopItemData { itemName = "Dash",         description = "Dash forward at lightning speed.",       price = 150, type = ShopItemType.Dash,         maxPurchases = 1  },
-            new ShopItemData { itemName = "Extra Heart",  description = "Restore one heart of max health.",       price = 75,  type = ShopItemType.ExtraHeart,  maxPurchases = -1 },
-            new ShopItemData { itemName = "More Stamina", description = "Magnet lasts 1.5 seconds longer.",       price = 125, type = ShopItemType.MoreStamina, maxPurchases = -1 },
-            new ShopItemData { itemName = "Bigger Ray",   description = "Your laser grows wider and longer.",     price = 175, type = ShopItemType.BiggerRay,   maxPurchases = -1 },
+            new ShopItemData { itemName = "Double Jump",   description = "Jump a second time in mid-air!",      price = 200, type = ShopItemType.DoubleJump,   maxPurchases = 1 },
+            new ShopItemData { itemName = "Dash",          description = "Dash forward at lightning speed.",     price = 150, type = ShopItemType.Dash,          maxPurchases = 1 },
+            new ShopItemData { itemName = "Extra Heart",   description = "Restore one heart of max health.",     price = 75,  type = ShopItemType.ExtraHeart,   maxPurchases = 1 },
+            new ShopItemData { itemName = "More Stamina",  description = "Magnet lasts 1.5 seconds longer.",     price = 125, type = ShopItemType.MoreStamina,  maxPurchases = 1 },
+            new ShopItemData { itemName = "Bigger Ray",    description = "Your laser grows wider and longer.",   price = 175, type = ShopItemType.BiggerRay,    maxPurchases = 1 },
+            new ShopItemData { itemName = "Bigger Magnet", description = "Increases magnet and push range.",     price = 150, type = ShopItemType.BiggerMagnet, maxPurchases = 1 },
         };
     }
 
@@ -129,6 +130,9 @@ public class ShopManager : MonoBehaviour
                 break;
             case ShopItemType.BiggerRay:
                 movement.UpgradeLaser();
+                break;
+            case ShopItemType.BiggerMagnet:
+                movement.UpgradeMagnet();
                 break;
         }
     }

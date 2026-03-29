@@ -1293,13 +1293,13 @@ MonoBehaviour:
     description: Magnet lasts 1.5 seconds longer.
     price: 125
     type: 3
-    maxPurchases: -1
+    maxPurchases: 1
     purchaseCount: 0
   - itemName: Bigger Ray
     description: Your laser grows wider and longer.
-    price: 175
+    price: 275
     type: 4
-    maxPurchases: -1
+    maxPurchases: 1
     purchaseCount: 0
 --- !u!70 &456429057
 CapsuleCollider2D:
