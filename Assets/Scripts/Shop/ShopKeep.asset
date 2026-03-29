@@ -14,35 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: 249b343487a0d69449f5e96d1d04ea44, type: 3}
     text: H-h-hi, Im Remy, our team's scientist.
     voice: {fileID: 0}
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: e43b86725ca03c74895b5029ac2238f0, type: 3}
     text: When this A.I. took over, all computer scientist went living on the streets,
       and i was one of them.
     voice: {fileID: 0}
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: 249b343487a0d69449f5e96d1d04ea44, type: 3}
     text: B-bu-b-but I WON'T GIVE UP!!!
     voice: {fileID: 0}
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: 249b343487a0d69449f5e96d1d04ea44, type: 3}
     text: "Not for my BL\xC5HAJ. He's still waiting for me at home."
     voice: {fileID: 0}
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: a02916aedf7edd44eba06eedcffac11f, type: 3}
     text: And I'm sure I will return to his fins.
     voice: {fileID: 0}
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
-    text: "Not for my BL\xC5HAJ. He's still waiting for me at home."
-    voice: {fileID: 0}
-  - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: a395d12ff29511a458d0defe00ff6b78, type: 3}
     text: Oh! So-so-s-sorry, i tend to yap a lot.
     voice: {fileID: 0}
   - speakerName: Remy
-    portrait: {fileID: -2243828726202422792, guid: edf12cf543c745c4ebe1e4cb9d3d5df7, type: 3}
+    portrait: {fileID: 21300000, guid: 5df6a92ce87e0fc4fa560b5c31c5f728, type: 3}
     text: An-anyways, can I give you any upgrades?
     voice: {fileID: 0}

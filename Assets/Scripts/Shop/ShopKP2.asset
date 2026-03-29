@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - speakerName: Remy
-    portrait: {fileID: 0}
+    portrait: {fileID: 21300000, guid: 5df6a92ce87e0fc4fa560b5c31c5f728, type: 3}
     text: Worked hard in that one.
     voice: {fileID: 0}
