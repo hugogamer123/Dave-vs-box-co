@@ -60,13 +60,13 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml",
+        "*.unity": "yaml"
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Unnamed-bip-game.slnx",
+    "dotnet.defaultSolution": "Dave-vs-box-co.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
