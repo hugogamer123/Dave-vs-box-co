@@ -48,22 +48,6 @@ public partial class Movement : MonoBehaviour
 
     }
 
-    // Called by the shop to grow the magnet and push colliders.
-    public void UpgradeMagnet()
-    {
-        ScaleCollider(magnet.GetComponent<Collider2D>(), 1.5f);
-        ScaleCollider(pushPoint.GetComponent<Collider2D>(), 1.5f);
-    }
-
-    void ScaleCollider(Collider2D col, float factor)
-    {
-        if (col == null) return;
-        if (col is CircleCollider2D circle)
-            circle.radius *= factor;
-        else if (col is BoxCollider2D box)
-            box.size *= factor;
-    }
-
     // Called by the shop to widen + lengthen the laser.
     public void UpgradeLaser()
     {
