@@ -30,4 +30,14 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = new Vector3(XDir, yDir, -10);
     }
+
+    public void SetBound1(Transform bound)
+    {
+        Bound1 = bound;
+    }
+
+    public void SetBound2(Transform bound)
+    {
+        Bound2 = bound;
+    }
 }
