@@ -165,6 +165,7 @@ public partial class Movement
         {
             LazerPointiere.SetPosition(0, rayOrigin);
             LazerPointiere.SetPosition(1, rayEnd);
+            LazerPointiere.enabled = true;
             Invoke(nameof(DisableLazerPointer), .2f);
         }
 
