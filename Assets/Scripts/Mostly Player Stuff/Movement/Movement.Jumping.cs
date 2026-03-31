@@ -39,7 +39,9 @@ public partial class Movement
 
     private void UpdateGrounded()
     {
-        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f, groundLayerMask);
+        var rayOrigin = (Vector2)transform.position + Collider.offset + Vector2.down * (Collider.size.y / 2);
+
+        isGrounded = Physics2D.Raycast(rayOrigin, Vector2.down, 0.1f, groundLayerMask);
 
         if (isGrounded)
         {

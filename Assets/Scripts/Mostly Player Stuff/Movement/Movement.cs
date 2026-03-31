@@ -15,6 +15,7 @@ public partial class Movement : MonoBehaviour
     public HeartUI heartUI;
     public LayerMask DamageLayer;
     public Rigidbody2D rb;
+    [SerializeField] BoxCollider2D Collider;
 
     // ── Animation / Facing ────────────────────────────────────────
     private Animator anim;
@@ -25,14 +26,10 @@ public partial class Movement : MonoBehaviour
     public bool hasDoubleJump = false;
     public bool hasDash = false;
 
-    // List Of Player collision because it has multiple
-    public List<Collider2D> playerColliders;
-
     // ── Die and Damage Code ─────────────────────────────────────────────────
     [Header("Damage and Death", order = 6)]
     [SerializeField] Collider2D handLCollider;
     [SerializeField] Collider2D handRCollider;
-    [SerializeField] Collider2D PlayerCollider;
     [SerializeField] float damageCooldown = .25f;
 
 
@@ -80,7 +77,6 @@ public partial class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        PlayerCollider = GetComponent<Collider2D>();
 
         //Physics2D.IgnoreCollision(PlayerCollider, handLCollider, true);
         //Physics2D.IgnoreCollision(PlayerCollider, handRCollider, true);

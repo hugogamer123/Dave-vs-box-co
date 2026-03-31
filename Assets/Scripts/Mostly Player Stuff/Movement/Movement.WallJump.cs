@@ -11,11 +11,9 @@ public partial class Movement
     [SerializeField] Transform wallCheck;
 
     private WallSide whichWallWasTouched = WallSide.None;
-    private bool canJumpOffWall;
 
     private void WallJump(Vector2 horizontalDir)
     {
-        canJumpOffWall = true;
         canHoldWall = false;
         isOnWall = false;
         cancelWallHold = true;
@@ -48,14 +46,17 @@ public partial class Movement
 
     private void HandleGravity()
     {
-        rb.gravityScale = (canHoldWall && isOnWall && !canJumpOffWall) ? 0f : 1f;
+        rb.gravityScale = (canHoldWall && isOnWall) ? 0f : 1f;
     }
 
     private void UpdateWallHold()
     {
         canHoldWall = CanHoldWall();
 
-        var ray = Physics2D.Raycast(wallCheck.position, facingRight ? Vector2.right : Vector2.left, 0.1f, groundLayerMask);
+        var facingDir = facingRight ? Vector2.right : Vector2.left;
+        var rayOrigin = (Vector2)transform.position + (facingDir * Collider.size.x / 2) + (facingRight ? Collider.offset : -Collider.offset);
+
+        var ray = Physics2D.Raycast(rayOrigin, facingDir, 0.1f, groundLayerMask);
         if (!ray || !canHoldWall)
         {
             isOnWall = false;

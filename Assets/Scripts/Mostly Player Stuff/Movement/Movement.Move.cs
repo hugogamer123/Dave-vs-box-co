@@ -24,9 +24,10 @@ public partial class Movement
 
         if (isOnWall)
         {
-            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, Time.fixedDeltaTime * 5f);
+            var movingUp = rb.linearVelocity.y > 0;
+            rb.linearVelocity = rb.linearVelocity - (rb.linearVelocity * Time.fixedDeltaTime * 5f);
 
-            if (rb.linearVelocity.sqrMagnitude < 0.01f)
+            if (movingUp != rb.linearVelocity.y > 0)
                 rb.linearVelocity = Vector2.zero;
         }
 
