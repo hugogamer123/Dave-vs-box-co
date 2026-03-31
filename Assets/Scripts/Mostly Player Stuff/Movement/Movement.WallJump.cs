@@ -13,7 +13,6 @@ public partial class Movement
     private WallSide whichWallWasTouched = WallSide.None;
     private bool canJumpOffWall;
 
-    #region Wall Jumping
     private void WallJump(Vector2 horizontalDir)
     {
         canJumpOffWall = true;
@@ -67,5 +66,4 @@ public partial class Movement
         isOnWall = true;
         whichWallWasTouched = ray.collider != null && ray.normal.x > 0 ? WallSide.Left : WallSide.Right;
     }
-    #endregion
 }

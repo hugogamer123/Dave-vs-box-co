@@ -11,7 +11,6 @@ public partial class Movement
     public LayerMask groundLayerMask;
     private bool usedDoubleJump = false;
 
-    #region Jumping
     private void HandleJump()
     {
         if (!inputHander.JumpPressed())
@@ -48,5 +47,4 @@ public partial class Movement
             usedDoubleJump = false;
         }
     }
-    #endregion
 }
