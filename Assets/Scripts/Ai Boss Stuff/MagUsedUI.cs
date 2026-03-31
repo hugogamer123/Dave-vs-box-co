@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MagUsedUI : MonoBehaviour
 {
-    [SerializeField] Movement movement;
+    [SerializeField] MagnetController magnet;
 
     [Header("Different Magnet Sprites")]
     [SerializeField] Image UiImage;
@@ -14,15 +14,15 @@ public class MagUsedUI : MonoBehaviour
 
     private void Update()
     {
-        switch (movement.WhatMagnetToUse)
+        switch (magnet.activeMagnet)
         {
-            case Movement.MagnetType.Pull:
+            case MagnetController.MagnetType.Pull:
                 UiImage.sprite = PullSpr;
                 break;
-            case Movement.MagnetType.Push:
+            case MagnetController.MagnetType.Push:
                 UiImage.sprite = PushSpr;
                 break;
-            case Movement.MagnetType.Lazer:
+            case MagnetController.MagnetType.Laser:
                 UiImage.sprite = LaserSpr;
                 break;
         }
