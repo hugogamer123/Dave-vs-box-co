@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5264057300679522658}
   - component: {fileID: 5195920948037202373}
   - component: {fileID: 1219440982920609418}
-  - component: {fileID: 4781795163159371210}
-  - component: {fileID: 2654053790415460182}
+  - component: {fileID: 5671100358767720346}
+  - component: {fileID: 5594937053467241252}
   m_Layer: 7
   m_Name: Ground
   m_TagString: Ground
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1854932259
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &4781795163159371210
+--- !u!50 &5671100358767720346
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!251 &2654053790415460182
+--- !u!251 &5594937053467241252
 PlatformEffector2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

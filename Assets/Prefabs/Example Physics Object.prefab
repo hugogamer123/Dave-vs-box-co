@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 3819814188189246381}
   - component: {fileID: 4319009952541898661}
   - component: {fileID: 1343974438777897299}
-  - component: {fileID: 1792692985731366819}
   m_Layer: 3
   m_Name: Example Physics Object
   m_TagString: PhysicsObject
@@ -195,18 +194,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1792692985731366819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3171356008914952616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9e82659bdc34d6eb1f82ce61e7714a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1343974438777897299}
-  magnet: {fileID: 0}
-  Offset: {x: 0, y: 0, z: 0}
