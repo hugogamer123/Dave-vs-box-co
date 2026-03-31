@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CannonShoot : MonoBehaviour
 {
-    
     [Header("Stuff")]
     public float ChargeMeter;
     public float MeterSubBy;
@@ -49,6 +48,7 @@ public class CannonShoot : MonoBehaviour
             isCouStarted = true;
         }
     }
+
     IEnumerator ShootCannon()
     {
         CannonLine.enabled = true;
@@ -69,6 +69,14 @@ public class CannonShoot : MonoBehaviour
                 StartCoroutine(ShootCannon());
                 ChargeMeter = 0;
             }
+        }
+    }
+
+    public void OnLaserHit(Component sender, object parameter)
+    {
+        if (sender.CompareTag("Player"))
+        {
+            AddCharge();
         }
     }
 }

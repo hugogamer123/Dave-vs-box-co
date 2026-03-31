@@ -35,6 +35,10 @@ public class DialogueManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] float typeSpeed = 0.04f;
 
+    [Header("Events")]
+    [SerializeField] private GameEvent onDialogueStart;
+    [SerializeField] private GameEvent onDialogueEnd;
+
     private DialogueLine[] lines;
     private int currentLine;
     private bool isTyping;
@@ -90,6 +94,7 @@ public class DialogueManager : MonoBehaviour
         if (InputHander.Instance != null)
             InputHander.Instance.DisableInputs();
 
+        onDialogueStart.Raise(this, null);
         ShowLine(currentLine);
     }
 
@@ -162,6 +167,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        onDialogueEnd.Raise(this, null);
         dialoguePanel.SetActive(false);
         CloseCanvas();
     }
