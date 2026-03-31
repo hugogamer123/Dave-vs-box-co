@@ -18,7 +18,6 @@ public class TriggerVolume : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Touch");
         if (triggeredByPlayer && collision.CompareTag("Player"))
         {
             currentTriggers++;
