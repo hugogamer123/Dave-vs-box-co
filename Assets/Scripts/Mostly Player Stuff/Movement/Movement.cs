@@ -8,9 +8,7 @@ public partial class Movement : MonoBehaviour
     // ── References ──────────────────────────────────────────────
     [Header("References", order = 0)]
     public InputHander inputHander;
-    public Magnet magnet;
     public SpriteRenderer spriteRenderer;
-    public PointEffector2D pushPoint;
     public GameObject player;
     public HeartUI heartUI;
     public LayerMask DamageLayer;
@@ -19,7 +17,7 @@ public partial class Movement : MonoBehaviour
 
     // ── Animation / Facing ────────────────────────────────────────
     private Animator anim;
-    private bool facingRight = true;
+    public bool facingRight { get; private set; } = true;
 
     // ── Shop Upgrades ───────────────────────────────────────────────────
     [Header("Shop Upgrades")]
@@ -35,26 +33,11 @@ public partial class Movement : MonoBehaviour
 
     bool dontRepeatDamage = false;
     bool isTriggered;
-    bool CanUseMag = true;
     bool useInputs = true;
 
-    [Space]
-    [SerializeField] float MagCooldown;
     public void Die()
     {
 
-    }
-
-    // Called by the shop to widen + lengthen the laser.
-    public void UpgradeLaser()
-    {
-        PlayerLazerWidth *= 1.5f;
-        LaserMaxDist *= 1.5f;
-        if (LazerPointiere != null)
-        {
-            LazerPointiere.startWidth = PlayerLazerWidth;
-            LazerPointiere.endWidth = PlayerLazerWidth;
-        }
     }
 
     public IEnumerator DamageCooldown()
@@ -87,16 +70,6 @@ public partial class Movement : MonoBehaviour
         //     Physics2D.IgnoreCollision(col, handRCollider, true);
         // }
 
-        if (LazerPointiere != null)
-        {
-            LazerPointiere.positionCount = 2;
-            LazerPointiere.useWorldSpace = true;
-            Vector3[] initLaserPositions = new Vector3[2] { Vector3.zero, Vector3.zero };
-            LazerPointiere.SetPositions(initLaserPositions);
-            LazerPointiere.startWidth = PlayerLazerWidth;
-            LazerPointiere.endWidth = PlayerLazerWidth;
-            LazerPointiere.enabled = false;
-        }
     }
 
     private void Update()
@@ -106,8 +79,6 @@ public partial class Movement : MonoBehaviour
         GetInputs();
 
         UpdateWallHold();
-
-        PlayerPos = transform.position;
     }
 
     private void GetInputs()
@@ -118,10 +89,6 @@ public partial class Movement : MonoBehaviour
 
         UpdateWallHold();
         HandleJump();
-
-        Magnet();
-        Pull();
-        Push();
     }
 
     private void FixedUpdate()
@@ -153,14 +120,6 @@ public partial class Movement : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         isTriggered = false;
-    }
-
-    [Serializable]
-    public enum MagnetType
-    {
-        Pull,
-        Push,
-        Lazer
     }
 
     [Serializable]
