@@ -30,6 +30,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("Player References")]
     [SerializeField] Movement movement;
+    [SerializeField] MagnetController magnet;
     [SerializeField] HeartUI heartUI;
 
     [Header("Shop Items")]
@@ -143,13 +144,13 @@ public class ShopManager : MonoBehaviour
                 heartUI.AddHeart();
                 break;
             case ShopItemType.MoreStamina:
-                movement.magnetDuration += 1.5f;
+                magnet.pullDuration += 1.5f;
                 break;
             case ShopItemType.BiggerRay:
-                movement.UpgradeLaser();
+                magnet.UpgradeLaser();
                 break;
             case ShopItemType.BiggerMagnet:
-                movement.UpgradeMagnet();
+                magnet.UpgradeMagnet();
                 break;
         }
     }
