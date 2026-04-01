@@ -36,7 +36,6 @@ public class ShopManager : MonoBehaviour
     [Header("Shop Items")]
     public ShopItemData[] items;
 
-    bool playerInRange;
     bool sequenceRunning;
 
     void Awake()
@@ -59,26 +58,13 @@ public class ShopManager : MonoBehaviour
         };
     }
 
-    void Update()
+    public void OnInteract(Component sender, object parameter)
     {
-        if (!playerInRange || sequenceRunning) return;
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
+        if (sequenceRunning)
+            return;
+
+        if (sender.CompareTag("Player"))
             OpenShopSequence();
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player") && !other.transform.root.CompareTag("Player")) return;
-        playerInRange = true;
-        if (interactPrompt != null) interactPrompt.SetActive(true);
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player") && !other.transform.root.CompareTag("Player")) return;
-        playerInRange = false;
-        sequenceRunning = false;
-        if (interactPrompt != null) interactPrompt.SetActive(false);
     }
 
     void OpenShopSequence()

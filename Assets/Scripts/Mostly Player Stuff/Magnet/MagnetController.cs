@@ -24,6 +24,9 @@ public class MagnetController : MonoBehaviour
 
     public MagnetType activeMagnet { get; private set; } = MagnetType.None;
 
+    [Header("Events")]
+    [SerializeField] private GameEvent onLaserHit;
+
     private Coroutine pullRoutine;
     private Coroutine pushRoutine;
     private bool laserFading = false;

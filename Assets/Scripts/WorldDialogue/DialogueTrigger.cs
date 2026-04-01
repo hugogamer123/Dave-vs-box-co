@@ -4,23 +4,9 @@ public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] DialogueData dialogue;
 
-    private bool playerInRange;
-
-    void Update()
+    public void OnInteract(Component sender, object parameter)
     {
-        if (playerInRange && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return)))
+        if (sender.CompareTag("Player"))
             DialogueManager.Instance?.StartDialogue(dialogue);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            playerInRange = true;
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            playerInRange = false;
     }
 }

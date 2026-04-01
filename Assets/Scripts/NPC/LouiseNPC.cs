@@ -12,9 +12,9 @@ public class LouiseNPC : MonoBehaviour
     private bool playerInRange;
     private bool sequenceRunning;
 
-    void Update()
+    public void OnInteract(Component sender, object parameter)
     {
-        if (playerInRange && !sequenceRunning && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return)))
+        if (sender.CompareTag("Player"))
             StartCoroutine(HealSequence());
     }
 
@@ -42,17 +42,5 @@ public class LouiseNPC : MonoBehaviour
         }
 
         sequenceRunning = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            playerInRange = true;
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            playerInRange = false;
     }
 }
