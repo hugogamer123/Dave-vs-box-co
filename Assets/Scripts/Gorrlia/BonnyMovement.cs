@@ -40,15 +40,14 @@ public class BonnyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         GroundCheck();
-        //PlayerCheck();
+        PlayerCheck();
 
-        //Move();
-        //if (isEdged && isGrounded && jumpTimer < jumpCooldown)
-        //{
-        //    faceRight = !faceRight;
-        //    FlipX();
-        //}
-        JumpToTarget();
+        Move();
+        if (isEdged && isGrounded && jumpTimer < jumpCooldown)
+        {
+            faceRight = !faceRight;
+            FlipX();
+        }
     }
 
     private void Move()
@@ -69,46 +68,12 @@ public class BonnyMovement : MonoBehaviour
         jumpTimer = 0;
     }
 
-    private void JumpToTarget()
-    {
-        if (!isGrounded)
-        {
-            return;
-        }
-        if (jumpTimer < jumpCooldown)
-        {
-
-            jumpTimer += Time.deltaTime;
-            return;
-        }
-        float dx = target.position.x - transform.position.x;
-        float distance = Mathf.Abs(dx);
-
-        float direction = Mathf.Sign(dx);
-
-        float horizontalForce = jumpHorizontalForce;
-        var gravity = Physics2D.gravity.y * rb2d.gravityScale * rb2d.mass;
-
-        float jumpTime = 2 * jumpForce / -gravity;
-        float maxJumpDistance = jumpTime * jumpHorizontalForce;
-        ;
-
-        if (distance <= maxJumpDistance)
-        {
-            horizontalForce = jumpHorizontalForce * (distance / maxJumpDistance);
-        }
-        rb2d.linearVelocity = Vector2.zero;
-        rb2d.AddForce(new Vector2(horizontalForce * direction, jumpForce), ForceMode2D.Impulse);
-        jumpTimer = 0;
-    }
-
     private void GroundCheck()
     {
         var hit1 = Physics2D.Raycast(groundCheck1.position, Vector2.down, 0.2f, groundLayer);
         var hit2 = Physics2D.Raycast(groundCheck2.position, Vector2.down, 0.2f, groundLayer);
         isGrounded = hit1 || hit2;
         isEdged = !hit1;
-
     }
 
     private void PlayerCheck()
