@@ -28,6 +28,9 @@ public class GorilaMovement : MonoBehaviour
     public float minPlayerVerticalDistance = 4f;
     public float maxPlayerVerticalDistance = 10f;
 
+    [Header("Script References")]
+    public Movement movement;
+
     private bool isGrounded;
     private bool isEdged;
     private bool isWaitAtEdge;
